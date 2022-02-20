@@ -12,8 +12,30 @@ services:
         tags:
             - { name: console.command }
 
+    ONGR\ElasticsearchBundle\Command\CacheClearCommand:
+        arguments:
+            $container: '@service_container'
+
+    ONGR\ElasticsearchBundle\Command\IndexCreateCommand:
+        arguments:
+            $container: '@service_container'
+        tags:
+            - { name: console.command }
+
+    ONGR\ElasticsearchBundle\Command\IndexDropCommand:
+        arguments:
+            $container: '@service_container'
+
+    ONGR\ElasticsearchBundle\Command\IndexExportCommand:
+        arguments:
+            $container: '@service_container'
+
+    ONGR\ElasticsearchBundle\Command\IndexImportCommand:
+        arguments:
+            $container: '@service_container'
+
     ongr.esb.cache:
-        class: Doctrine\Common\Cache\PhpFileCache
+        class: ONGR\ElasticsearchBundle\Cache\PhpFileCache
         arguments: ["%kernel.cache_dir%/ongr/elasticsearch", ".ongr.data"]
 
     ongr.esb.cache_reader:

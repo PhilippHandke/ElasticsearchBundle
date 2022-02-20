@@ -1,17 +1,9 @@
 <?php
 
-/*
- * This file is part of the ONGR package.
- *
- * (c) NFQ Technologies UAB <info@nfq.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace ONGR\ElasticsearchBundle\Mapping;
 
-use Doctrine\Common\Inflector\Inflector;
+use Doctrine\Inflector\Inflector;
 
 /**
  * Utility for string case transformations.
@@ -27,7 +19,7 @@ class Caser
      */
     public static function camel($string)
     {
-        return Inflector::camelize($string);
+        return lcfirst(str_replace([' ', '_', '-'], '', ucwords($string, ' _-')));
     }
 
     /**
